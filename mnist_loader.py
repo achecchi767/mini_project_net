@@ -15,7 +15,7 @@ function usually called by our neural network code.
 # Standard library
 import pickle  # ✅ Changed from cPickle to pickle
 import gzip
-
+from pathlib import Path
 
 # Third-party libraries
 import numpy as np
@@ -38,8 +38,10 @@ def load_data():
     The ``validation_data`` and ``test_data`` are similar, except
     each contains only 10,000 images.
     """
-    # put here the full path of mnist data on your computer
-    with gzip.open(r'C:\Users\alech\OneDrive\Desktop\data\mnist.pkl.gz', 'rb') as f:
+    
+    file_path = Path("mini_project_net") / "mnist.pkl.gz"
+    
+    with gzip.open(file_path, 'rb') as f:
         training_data, validation_data, test_data = pickle.load(f, encoding='latin1')  # ✅ Fixed for Python 3
     return (training_data, validation_data, test_data)
 
