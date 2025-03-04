@@ -39,7 +39,10 @@ def load_data():
     each contains only 10,000 images.
     """
     
-    file_path = Path("mini_project_net") / "mnist.pkl.gz"
+    script_dir = Path(__file__).parent  # run within the folder and it will work fine
+
+    # Construct the path to the file
+    file_path = script_dir / "mnist.pkl.gz"
     
     with gzip.open(file_path, 'rb') as f:
         training_data, validation_data, test_data = pickle.load(f, encoding='latin1')  # ✅ Fixed for Python 3
